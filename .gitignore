@@ -1,0 +1,6 @@
+.xmake
+.vscode
+build
+.DS_Store
+venv
+build

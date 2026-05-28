@@ -1,0 +1,12 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+SortIncludes: false
+ColumnLimit: 0
+PointerAlignment: Left
+AccessModifierOffset: -4
+AlignConsecutiveMacros: Consecutive
+AlwaysBreakTemplateDeclarations: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+BreakAfterAttributes: Always
