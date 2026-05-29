@@ -97,3 +97,28 @@ endif()
 add_subdirectory(driver)
 add_subdirectory(apps/bootloader)
 add_subdirectory(apps/app)
+
+set(STM32_BOOT_ADDR 0x8000000)
+set(STM32_APP_ADDR  0x8004000)
+
+add_custom_target(flash-boot
+    COMMAND st-flash write "${STM32_OUTPUT_DIR}/boot.bin" ${STM32_BOOT_ADDR}
+    USES_TERMINAL
+    COMMENT "Flashing boot.bin -> ${STM32_BOOT_ADDR}"
+)
+add_dependencies(flash-boot boot)
+
+add_custom_target(flash-app
+    COMMAND st-flash write "${STM32_OUTPUT_DIR}/app.bin" ${STM32_APP_ADDR}
+    USES_TERMINAL
+    COMMENT "Flashing app.bin  -> ${STM32_APP_ADDR}"
+)
+add_dependencies(flash-app app)
+
+add_custom_target(flash
+    COMMAND st-flash write "${STM32_OUTPUT_DIR}/boot.bin" ${STM32_BOOT_ADDR}
+    COMMAND st-flash write "${STM32_OUTPUT_DIR}/app.bin"  ${STM32_APP_ADDR}
+    USES_TERMINAL
+    COMMENT "Flashing boot.bin + app.bin"
+)
+add_dependencies(flash boot app)
