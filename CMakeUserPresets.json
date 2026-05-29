@@ -1,0 +1,44 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "dev",
+            "displayName": "My ARM toolchain",
+            "hidden": true,
+            "cacheVariables": {
+                "ARM_TOOLCHAIN_DIR": "/Users/cc/playground/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi"
+            }
+        },
+        {
+            "name": "cfg-debug",
+            "displayName": "Debug — local toolchain",
+            "inherits": [
+                "dev",
+                "debug"
+            ]
+        },
+        {
+            "name": "cfg-release",
+            "displayName": "Release — local toolchain",
+            "inherits": [
+                "dev",
+                "release"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "cfg-debug",
+            "configurePreset": "cfg-debug"
+        },
+        {
+            "name": "cfg-release",
+            "configurePreset": "cfg-release"
+        }
+    ]
+}
